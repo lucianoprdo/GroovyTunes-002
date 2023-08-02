@@ -1,9 +1,4 @@
-import React, { useState } from 'react';
-import { createUser } from '../../services/userAPI';
-import LoadingMessage from '../loading';
-import './login.css';
-
-function Login() {
+function Search() {
   const [name, setName] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -53,4 +48,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Search;
