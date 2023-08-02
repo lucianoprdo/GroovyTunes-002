@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { createUser } from '../../services/userAPI';
 import LoadingMessage from '../loading';
+import './login.css';
 
 function Login() {
   const [name, setName] = useState<string>('');

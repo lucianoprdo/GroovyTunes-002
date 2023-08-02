@@ -1,0 +1,51 @@
+body {
+  align-items: center;
+  background: #272a37;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+}
+
+.container {
+  align-items: center;
+  background-color: white;
+  border: 2px solid #272a37; /* Corrigido: Adicionado estilo de borda */
+  border-radius: 10px; /* Corrigido: Adicionado borda arredondada */
+  box-shadow: 0 0 4px 4px rgba(250, 250, 250, 0.767); /* Adicionado sombra */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px auto; /* Centralizar o formulário */
+  max-width: 600px; /* Adicionado largura máxima para evitar que fique muito grande */
+  padding: 20px; /* Adicionado espaçamento interno */
+}
+
+.input-login {
+  border: 2px solid #3b3f50; /* Adicionado estilo de borda */
+  border-radius: 5px; /* Adicionado borda arredondada */
+  font-size: 16px;
+  margin-bottom: 10px; /* Adicionado espaçamento inferior */
+  padding: 10px; /* Adicionado espaçamento interno */
+  width: 95%; /* Ocupar toda a largura disponível */
+}
+
+.btn-login {
+  background: #3b3f50;
+  border: none; /* Removido a borda */
+  border-radius: 10px;
+  color: white;
+  cursor: pointer; /* Adicionado cursor de mão ao passar por cima do botão */
+  font-size: 18px;
+  font-weight: 400;
+  height: 53px;
+  line-height: normal;
+  padding: 0 20px; /* Adicionado espaçamento horizontal */
+  width: 102%; /* Ocupar toda a largura disponível */
+}
+
+/* Adicionado estilo para o logotipo */
+img {
+  margin-bottom: 20px; /* Adicionado espaçamento inferior */
+  max-width: 100%;
+}
