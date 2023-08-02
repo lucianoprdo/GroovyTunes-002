@@ -1,49 +1,90 @@
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom'; // Importando o componente Link
+import searchAlbumsAPI from '../../services/searchAlbumsAPI';
+import LoadingMessage from '../../components/loading';
+import { AlbumType } from '../../types';
+import './search.css';
+
 function Search() {
   const [name, setName] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [albums, setAlbums] = useState<AlbumType[]>([]);
+  const [valueInput, setValueInput] = useState<string>('');
+  const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
+    setValueInput(event.target.value);
   };
 
-  const isNameValid: boolean = name.trim().length >= 3;
+  const isNameValid: boolean = name.trim().length >= 2;
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
     setIsLoading(true);
-    createUser({ name })
-      .then(() => {
+    searchAlbumsAPI(name)
+      .then((response) => {
+        setAlbums(response);
+        setIsLoading(false);
+        setName('');
+      })
+      .catch((error) => {
+        console.error('Erro ao pesquisar álbuns:', error);
         setIsLoading(false);
       });
-    localStorage.setItem('user', name);
   };
 
   return (
-    <div className="container">
-      <img src="../../../images/logo.svg" alt="Logotipo Trybetunes" />
-      <form>
-        <label htmlFor="nameInput">Nome:</label>
-        <input
-          className="input-login"
-          type="text"
-          id="nameInput"
-          data-testid="login-name-input"
-          value={ name }
-          onChange={ handleChange }
-        />
+    <div>
+      <h2>Pesquisar Artistas ou Bandas</h2>
+      <form onSubmit={ handleSubmit }>
+        <label htmlFor="artistInput">
+          Nome do Artista ou Banda:
+          <input
+            type="text"
+            id="artistInput"
+            data-testid="search-artist-input"
+            value={ name }
+            onChange={ handleChange }
+          />
+        </label>
 
         <button
-          className="btn-login"
-          type="button"
-          onClick={ handleSubmit }
-          data-testid="login-submit-button"
-          disabled={ !isNameValid }
+          type="submit"
+          data-testid="search-artist-button"
+          disabled={ !isNameValid || isLoading }
         >
-          {' '}
-          Entrar
+          Pesquisar
         </button>
-
       </form>
-      {isLoading && <LoadingMessage />}
+
+      {isLoading ? (
+        <div><LoadingMessage /></div>
+      ) : (
+        <div>
+          {albums.length > 0 ? (
+            <div>
+              <h3>
+                Resultado de álbuns de:
+                {' '}
+                {`${valueInput}`}
+              </h3>
+              {albums.map(({ collectionId, collectionName }) => (
+                <div key={ collectionId }>
+                  <Link
+                    to={ `/album/${collectionId}` }
+                    data-testid={ `link-to-album-${collectionId}` }
+                  >
+                    {collectionName}
+                  </Link>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div>Nenhum álbum foi encontrado.</div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

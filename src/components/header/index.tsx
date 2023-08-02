@@ -39,7 +39,7 @@ function Header() {
       </nav>
 
       {isLoading ? (
-        <div>Carregando...</div>
+        <div><LoadingMessage /></div>
       ) : (
         <div data-testid="header-user-name">
           Bem-vindo(a),
