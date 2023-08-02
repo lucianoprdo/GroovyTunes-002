@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Importando o componente Link
+import { Link } from 'react-router-dom'; // Importando o componente Link
 import searchAlbumsAPI from '../../services/searchAlbumsAPI';
 import LoadingMessage from '../../components/loading';
 import { AlbumType } from '../../types';
@@ -10,7 +10,6 @@ function Search() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [albums, setAlbums] = useState<AlbumType[]>([]);
   const [valueInput, setValueInput] = useState<string>('');
-  const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
