@@ -15,9 +15,9 @@ function Header() {
   }, []);
 
   return (
-    <header data-testid="header-component">
-      <nav>
-        <ul>
+    <header data-testid="header-component" className="navbar-container">
+      <nav className="navbar">
+        <ul className="content">
           <li>
             <NavLink to="/search" data-testid="link-to-search">
               Pesquisar
