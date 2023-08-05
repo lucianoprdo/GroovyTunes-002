@@ -31,13 +31,20 @@ function Album() {
         <div>
           <h2 data-testid="artist-name">{albumData.artistName}</h2>
           <h3 data-testid="album-name">{albumData.collectionName}</h3>
-          {musics.map((music) => (
-            <MusicCard
-              key={ music.trackId }
-              trackName={ music.trackName }
-              previewUrl={ music.previewUrl }
-            />
-          ))}
+
+          {musics.map(({ trackId, trackName, previewUrl }) => {
+            // console.log('trackId:', trackId);
+
+            return (
+              <MusicCard
+                key={ trackId }
+                trackId={ trackId }
+                trackName={ trackName }
+                previewUrl={ previewUrl }
+              />
+            );
+          })}
+
         </div>
       )}
     </div>
