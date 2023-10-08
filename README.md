@@ -1,10 +1,21 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+Claro, aqui estão os passos em vez de requisitos:
+
+**Passo 1:** Criar um formulário de login dentro do componente "Login" que será exibido na rota "/". O formulário deve incluir um campo onde a pessoa deve digitar seu nome, e esse campo deve ter um identificador "data-testid" com o valor "login-name-input". Também crie um botão com o texto "Entrar" e um identificador "data-testid" com o valor "login-submit-button". O botão só deve ser habilitado se o nome digitado tiver 3 ou mais caracteres. Ao clicar em "Entrar", utilize a função "createUser" do arquivo "src/services/userAPI.ts" para salvar o nome digitado. Enquanto a informação está sendo salva, exiba a mensagem "Carregando...". Após salvar o nome, faça um redirecionamento para a rota "/search".
+
+**Passo 2:** Crie um formulário de pesquisa de artistas dentro do componente "Search", que será exibido na rota "/search". O formulário deve incluir um campo onde a pessoa pode digitar o nome da banda ou artista a ser pesquisado, com o identificador "data-testid" igual a "search-artist-input". Crie um botão "Pesquisar" com o identificador "data-testid" igual a "search-artist-button". O botão só deve ser habilitado se o nome do artista tiver 2 ou mais caracteres. Ao clicar em "Pesquisar", faça uma requisição utilizando a função do arquivo "services/searchAlbumsAPIs.ts" para buscar os álbuns da banda ou artista pesquisado. Enquanto aguarda a resposta da API, esconda o campo de pesquisa e o botão e exiba a mensagem "Carregando...". Após receber a resposta, mostre o texto "Resultado de álbuns de: <artista>" na tela, onde "<artista>" é o nome digitado no campo. Liste os álbuns retornados e crie um link para a rota "/album/:id" para cada álbum, onde ":id" é o valor da propriedade "collectionId" de cada álbum. Este link deve ter o atributo "data-testid" com o valor `link-to-album-${collectionId}`. Se a API não retornar nenhum álbum, exiba a mensagem "Nenhum álbum foi encontrado".
+
+**Passo 3:** Dentro do componente "Album", que será exibido na rota "/album/:id", faça uma requisição utilizando a função "getMusics" do arquivo "src/services/musicsAPI.ts" para obter a lista de músicas do álbum selecionado. Enquanto aguarda a resposta da API, exiba a mensagem "Carregando...". Exiba o nome da banda ou artista e o nome do álbum na tela. Liste todas as músicas do álbum e inclua um componente chamado "MusicCard" para exibir o nome da música e um player para tocar o preview da música. O preview deve ser reproduzido usando a tag de áudio do HTML. Certifique-se de adicionar o atributo "data-testid" igual a "audio-component" na tag de áudio de cada música.
+
+**Passo 4:** Crie um componente de cabeçalho chamado "Header" dentro da pasta "src/components". O componente deve incluir três links de navegação: "Pesquisa", "Favoritos" e "Perfil". Cada link deve redirecionar para as rotas correspondentes. Além disso, utilize a função "getUser" do arquivo "src/services/userApi.ts" para recuperar o nome da pessoa logada e exiba essa informação na tela. Enquanto as informações estão sendo carregadas, mostre a mensagem "Carregando...".
+
+**Passo 5:** Adicione checkboxes às músicas no componente "MusicCard" para que as pessoas possam marcá-las como favoritas. Use uma imagem de um coração cheio quando a música for favoritada e uma imagem de um coração vazio quando não for favoritada. Cada checkbox deve ter o atributo "data-testid" com o valor `checkbox-music-${trackId}`.
+
+**Passo 6:** Ao marcar ou desmarcar uma música como favorita, faça uma requisição para adicionar ou remover a música da lista de favoritos utilizando as funções "addSong" e "removeSong" da "favoriteSongsAPI".
+
+**Passo 7:** Na página de um álbum, faça uma requisição utilizando a função "getFavoriteSongs" da "favoriteSongsAPI" para atualizar a lista de músicas favoritas. As músicas favoritadas devem ter os checkboxes marcados automaticamente.
+
+**Passo 8:** Na página de "Favoritos", utilize a função "getFavoriteSongs" da "favoriteSongsAPI" para obter a lista de músicas favoritas. Enquanto aguarda a resposta da API, exiba a mensagem "Carregando...". Após receber a resposta, utilize o componente "MusicCard" para exibir a lista de músicas favoritas. É possível desfavoritar as músicas para removê-las da lista.
+
+**Passo 9:** Na página de "Perfil", utilize a função "getUser" da "userAPI" para recuperar as informações da pessoa logada, como nome, email, descrição e imagem. Exiba essas informações na tela. Se as informações estiverem sendo carregadas, mostre a mensagem "Carregando...". Crie um link para a página de edição de perfil.
+
+**Passo 10:** Crie um formulário de edição de perfil dentro do componente "ProfileEdit", que será exibido na rota "/profile/edit". Utilize a função "getUser" da "userAPI" para obter as informações da pessoa logada e preencha o formulário com essas informações. O botão de salvar só deve estar habilitado se todos os campos estiverem preenchidos. Após salvar as informações, redirecione a pessoa para a página de perfil.
